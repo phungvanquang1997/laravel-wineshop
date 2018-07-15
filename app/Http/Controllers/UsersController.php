@@ -67,6 +67,7 @@ class UsersController extends Controller
     function verifyUser(Request $Request)
     {
 
+
     	$rules = [
     		'txtUserName' => 'required',
        		 'txtPassword' => 'required',
@@ -88,7 +89,6 @@ class UsersController extends Controller
 			return  view('client.login',$errors);*/
 		}
 		else{
-		 
 				$arr=[
 				 
 				'f_UserName' => $Request->txtUserName,
@@ -103,10 +103,12 @@ class UsersController extends Controller
 					 return redirect('/');
 				}
 				
-	
+		
 				else{
-					$error = 'đăng nhập thất bại';
-				 	return  view('client.login',['error'=>$error]);
+					$error = Auth::attempt(['f_Username'=>$Request->txtUserName],['f_Password'=>md5($Request->txtPassword)]) ? true : false;
+				/*	$error = 'đăng nhập thất bại';
+			*/
+				 	return  view('client.test',['error'=>$error]);
 				}
 
 				 

@@ -42,7 +42,7 @@
 					<button type="submit" class="btn btn-default" name = "btnSearch">Tìm kiếm</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-				
+						<li><button id="ajax">Click me</button></li>
 						@if(Session::has('login') && Session::get('login') == true)
 					
 						
@@ -63,7 +63,7 @@
 						<li><a href="/login">Đăng Nhập</a></li>
 						@endif
 							
-				
+						
 				</ul>
 			</div>
 		</div>
@@ -87,9 +87,6 @@
 				
 				
 
-					<div class="panel-heading">
-						<h3 class="panel-title">Hiển thị sản phẩm </h3>
-					</div>
 		
 				</div>
 			</div>
@@ -101,15 +98,41 @@
 					<div class="panel-body" style="padding: 0px">						
 							@yield('main')
 					</div>
+					<div class="panel-body" id="result" style="padding: 0px">						
+							
+					</div>
 				</div>
 			</div>
 				@yield('pagination')
 		</div>
 	</div>
-
+	
 
 <!-- Latest compiled and minified JavaScript -->
 		
 
 </body>
 </html>
+<script type="text/javascript">
+	$('#ajax').click(function()
+	{
+		$.ajax({
+			url:"http://localhost:8000/test",
+			type:'get',
+			dataType: 'json', // chưa test dạng json
+			success : function($rs){
+				var $html ="";
+				for($i = 0 ; $i < $rs.length ; $i++)
+				{
+						$html += "<h1>"+$rs[$i].f_Username+"</h1>";
+				};
+				$('#result').html($html);
+			},
+			error : function()
+			{
+				alert('error');
+			}
+		});
+	})
+
+</script>

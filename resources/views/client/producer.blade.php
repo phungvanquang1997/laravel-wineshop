@@ -12,9 +12,9 @@
 												<p style="height: 40px"><?= $item->TinyDes ?></p>
 												<br>
 												<p>
-													<a href="product/{{$item->ProID}}" class="btn btn-primary" role="button">Chi tiết</a>
+													<a href="/product/{{$item->ProID}}" class="btn btn-primary" role="button">Chi tiết</a>
 	
-													<a href="product/{{$item->ProID}}" class="btn btn-danger" role="button" name ="btnDatMua">
+													<a href="/product/{{$item->ProID}}" class="btn btn-danger" role="button" name ="btnDatMua">
 														<span class="glyphicon glyphicon-shopping-cart"></span>
 														Đặt mua
 													</a>

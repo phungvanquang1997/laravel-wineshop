@@ -49,3 +49,9 @@ Route::post('/register','UsersController@postRegister');
 Route::get('/register','UsersController@getRegister')->name('register');
 
 Route::get('/producer/{id}','ProducerController@getProducer');
+
+Route::get('/test',function()
+{
+	$data = DB::table('users')->get();
+	return $data;
+});
